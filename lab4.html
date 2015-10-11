@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<title>2D game</title>
+	<script type="text/javascript">
+         <!--
+            var imgObj = null;
+            
+            function init(){
+               imgObj = document.getElementById('fig');
+               //imgObj.style.position= 'relative'; 
+               imgObj.style.top = '0px'; 
+               imgObj.style.left = '0px'; 
+            }
+            
+            function moveDown(){
+            	if (imgObj.style.top < '40px')
+               		imgObj.style.top = parseInt(imgObj.style.top) + 10 + 'px';
+            }
+             function moveUp(){
+             	if (imgObj.style.top != '-50px')
+               		imgObj.style.top = parseInt(imgObj.style.top) + (-10) + 'px';
+            }
+             function moveRight(){
+            	
+               		imgObj.style.left = parseInt(imgObj.style.left) + 10 + 'px';
+            }
+             function moveLeft(){
+             	
+               		imgObj.style.left = parseInt(imgObj.style.left) + (-10) + 'px';
+            }
+            
+            window.onload =init;
+     </script>
+<style>
+			@-webkit-keyframes obs_move {
+			from {left:100%;}
+			to {left:0;}
+			}
+	 
+			@keyframes obs_move {
+			from {left:100%;}
+			to {left:0;}
+			}
+
+			@keyframes ene_move {
+			0% {left:100%;top:-20px;transform: rotate(180deg)}
+			
+			50%{left:50%;top:60px;}
+			100%{left:0%;top:-20px;}
+			}
+
+
+
+			@-webkit-keyframes move {
+			from {background-position: 0 0;}
+			to {background-position: -400px 0;}
+			}
+			 
+			@keyframes move {
+			from {background-position: 0 0;}
+			to {background-position: -400px 0;}
+			}
+			
+
+#bg_img{
+
+	
+	background: url(images.jpg) repeat-x ;
+	-webkit-animation: move 20s linear infinite;
+	animation: move 20s linear infinite;
+	height:161px;
+}
+
+
+.posi{
+	margin-top: 60px;
+	position:absolute;
+	top:10px;
+
+}
+#posi1{
+	-webkit-animation: obs_move 20s linear infinite;
+	animation: obs_move 20s linear infinite;
+	margin-top: 20px;
+	position:absolute;
+	left:150px;
+	top:-20px;
+}
+#posi2{
+	-webkit-animation: move 20s linear infinite;
+	animation: obs_move 10s linear infinite;
+	margin-top: 20px;
+	position:absolute;
+	left:150px;
+	top:70px;
+}
+#posi3{
+
+	animation: ene_move 5s linear infinite;
+	margin-top: 20px;
+	position:absolute;
+	
+	top:40px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="main">
+<div id="bg_img">
+
+</div>
+
+<figure id = "fig" class = "posi">
+		<img src="download.png" width ="40px" height ="40px" >
+</figure>
+<div id  = "posi1">
+
+		<img src="balloon.png" width ="30px" height ="35px" >
+
+</div>
+<div id  = "posi2">
+
+		<img src="balloon.png" width ="40px" height ="40px" >
+
+</div>
+<div id  = "posi3">
+
+		<img src="arock.png" width ="40px" height ="45px" >
+
+</div>
+<div id ="button"  style = "margin-left: 550px";>
+<input type="button" value="up" onclick="moveUp();" />
+
+
+</div>
+<div id ="button1"  style = "margin-left: 500px";>
+<input type="button" value="left" onclick="moveLeft();" />
+<input type="button" value="down" onclick="moveDown();" />
+<input type="button" value="right" onclick="moveRight();" />
+
+</div>
+</div>
+
+
+
+</body>
+</html>
