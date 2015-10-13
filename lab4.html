@@ -6,13 +6,20 @@
 	<title>2D game</title>
 	<script type="text/javascript">
          <!--
-            var imgObj = null;
-            
+            var imgObj	= null;
+         	var obs1	= null;
+			var obs2	= null;
+			var obs3    = null;
             function init(){
-               imgObj = document.getElementById('fig');
-               //imgObj.style.position= 'relative'; 
-               imgObj.style.top = '0px'; 
-               imgObj.style.left = '0px'; 
+               	imgObj	= document.getElementById('fig');
+         		obs1    = document.getElementById("obs1");
+				obs2 	= document.getElementById("obs2");
+				obs3    = document.getElementById("obs3");
+				bg 		= document.getElementById("bg_img");
+               	buttons = document.getElementById("button1");
+               	buttons1 = document.getElementById("button");
+               	imgObj.style.top = '0px'; 
+               	imgObj.style.left = '0px'; 
             }
             
             function moveDown(){
@@ -31,7 +38,47 @@
              	
                		imgObj.style.left = parseInt(imgObj.style.left) + (-10) + 'px';
             }
-            
+            setInterval(function(){
+    
+			    
+			    var charTop		= imgObj.offsetTop;
+			    var charLeft	= imgObj.offsetLeft;
+			    var charHeight	= imgObj.offsetHeight;
+			    var charWidth	= imgObj.offsetWidth;
+			    
+			    
+			   	var obs1Top		= obs1.offsetTop;
+			    var obs1Left	= obs1.offsetLeft;
+			    var obs1Height	= obs1.offsetHeight;
+			    var obs1Width	= obs1.offsetWidth;
+
+			    var obs2Top		= obs2.offsetTop;
+			    var obs2Left	= obs2.offsetLeft;
+			    var obs2Height	= obs2.offsetHeight;
+			    var obs2Width	= obs2.offsetWidth;
+			    
+			    var obs3Top		= obs3.offsetTop;
+			    var obs3Left	= obs3.offsetLeft;
+			    var obs3Height	= obs3.offsetHeight;
+			    var obs3Width	= obs3.offsetWidth;
+			
+			    
+			   	if ((!(charTop + charHeight < obs1Top || charTop > obs1Top + obs1Height || charLeft + charWidth < obs1Left || charLeft > obs1Left + obs1Width)) || (!(charTop + charHeight < obs2Top || charTop > obs2Top + obs2Height || charLeft + charWidth < obs2Left || charLeft > obs2Left + obs2Width)) || (!(charTop + charHeight < obs3Top || charTop > obs3Top + obs3Height || charLeft + charWidth < obs3Left || charLeft > obs3Left + obs3Width)))
+			    	{
+
+						  window.alert("Game over");
+						  bg.style.display = 'none';
+						  imgObj.style.display = 'none'; 
+						  obs1.style.display = 'none'; 
+						  obs2.style.display = 'none'; 
+						  obs3.style.display = 'none';
+						  buttons.style.display = 'none';
+						  buttons1.style.display = 'none';
+
+						   
+					}
+    
+					},200);
             window.onload =init;
      </script>
 <style>
@@ -81,7 +128,7 @@
 	top:10px;
 
 }
-#posi1{
+#obs1{
 	-webkit-animation: obs_move 20s linear infinite;
 	animation: obs_move 20s linear infinite;
 	margin-top: 20px;
@@ -89,7 +136,7 @@
 	left:150px;
 	top:-20px;
 }
-#posi2{
+#obs2{
 	-webkit-animation: move 20s linear infinite;
 	animation: obs_move 10s linear infinite;
 	margin-top: 20px;
@@ -97,7 +144,7 @@
 	left:150px;
 	top:70px;
 }
-#posi3{
+#obs3{
 
 	animation: ene_move 5s linear infinite;
 	margin-top: 20px;
@@ -111,32 +158,30 @@
 <body>
 
 <div id="main">
-<div id="bg_img">
-
-</div>
+<div id="bg_img"></div>
+<!--p id ="game" style= "position:absolute; z-index:-1; font-size:500%;">Game Over</p-->
+<img src="gameover.png"  width= "400px" height="150px" style= "position:absolute; left: 30%; top: 0px;z-index:-1;">
 
 <figure id = "fig" class = "posi">
 		<img src="download.png" width ="40px" height ="40px" >
 </figure>
-<div id  = "posi1">
+<div id  = "obs1">
 
 		<img src="balloon.png" width ="30px" height ="35px" >
 
 </div>
-<div id  = "posi2">
+<div id  = "obs2">
 
 		<img src="balloon.png" width ="40px" height ="40px" >
 
 </div>
-<div id  = "posi3">
+<div id  = "obs3">
 
 		<img src="arock.png" width ="40px" height ="45px" >
 
 </div>
 <div id ="button"  style = "margin-left: 550px";>
 <input type="button" value="up" onclick="moveUp();" />
-
-
 </div>
 <div id ="button1"  style = "margin-left: 500px";>
 <input type="button" value="left" onclick="moveLeft();" />
